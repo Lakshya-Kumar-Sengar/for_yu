@@ -5,553 +5,316 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cake</title>
 
-  
-
     <style>
-        * {
-  box-sizing: border-box;
-}
-:root {
-  --tongue: #c12115;
-  --pupil: #fff;
-  --icing: #f2f2f2;
-  --stroke: #1a1a1a;
-}
+        @import url(https://fonts.googleapis.com/css?family=Lato:300italic);
+html,
 body {
-  --frosting: hsl(var(--frosting-hue, 0), 100%, 55%);
-  --lightness: 50;
-  --flame: 0;
-  --glow-hue: 40;
-  --glow-saturation: 50;
-  --glow-lightness: 35;
-  --glow-alpha: 0.4;
-  --transparency-alpha: 0;
-  --glow: hsla(var(--glow-hue), calc(var(--glow-saturation) * 1%), calc(var(--glow-lightness) * 1%), var(--glow-alpha));
-  --transparent: hsla(0, 0%, 0%, var(--transparency-alpha));
-  display: flex;
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background: hsl(180, 30%, calc(var(--lightness, 50) * 1%));
-}
-.whitespace {
-  width: 7px;
-}
-.birthday-button {
-  position: relative;
-  transform: scale(0.6);
-  cursor: pointer;
-}
-.birthday-button__text {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
   width: 100%;
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  font-family: sans-serif;
-  font-weight: bold;
-}
-.birthday-button__text .char {
-  display: inline-block;
-  color: hsl(var(--hue, 0), calc(var(--char-sat, 0) * 1%), calc(var(--char-light, 0) * 1%));
-}
-.birthday-button:before {
-  content: '';
-  position: absolute;
-  height: 240px;
-  width: 240px;
-  background: radial-gradient(var(--glow), var(--transparent) 30%), radial-gradient(var(--glow), var(--transparent) 50%);
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -70%) scale(calc(var(--flame) * 3));
-  z-index: 2;
-  filter: blur(15px);
-  opacity: var(--flame);
-}
-.birthday-button:after {
-  content: '';
-  height: 30px;
-  width: 400px;
-  filter: blur(15px);
-  position: absolute;
-  background: radial-gradient(var(--glow), var(--transparent) 20%), radial-gradient(var(--glow), var(--transparent));
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(calc(var(--flame) * 1));
-  opacity: var(--flame);
-}
-.birthday-button__button {
-  width: 240px;
-  height: 100px;
-  position: relative;
-  border: 0;
-  background: var(--icing);
-  border-radius: 14px;
-  cursor: pointer;
-}
-.birthday-button__cake {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
-  width: 289.5px;
-  display: none;
-}
-.cake__eye-body {
-  fill: var(--stroke);
-}
-.cake__eye-pupil {
-  fill: var(--pupil);
-}
-.cake__tongue {
-  fill: var(--tongue);
-}
-.cake__mouth-opening {
-  fill: var(--stroke);
-  stroke: var(--stroke);
-}
-.cake__sprinkle {
-  --sprinkle: hsl(var(--sprinkle-hue, 0), 100%, 75%);
-  fill: var(--sprinkle);
-}
-.cake__frosting--start {
-  fill: var(--frosting);
-}
-.cake__frosting--duplicate {
-  fill: var(--frosting);
-}
-.candle__flame {
-  opacity: var(--flame, 0);
-}
-.candle__flame-outer {
-  fill: #ff711f;
-}
-.candle__flame-inner {
-  fill: #edca1d;
-}
-.face__stroke {
-  stroke: var(--stroke);
-}
-.cake__candle:nth-of-type(1) {
-  --flame: 0;
-}
-.cake__candle:nth-of-type(2) {
-  --flame: 0;
-}
-.cake__candle:nth-of-type(3) {
-  --flame: 0;
-}
-label {
-  height: 44px;
-  width: 44px;
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  cursor: pointer;
-}
-label > svg {
-  position: absolute;
   height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-}
-label path {
-  fill: #476b6b;
-}
-label svg:nth-of-type(1) {
-  display: none;
-}
-[type='checkbox'] {
-  height: 0;
-  width: 0;
-  position: absolute;
-  top: 0;
-  left: 100%;
-}
-:checked ~ label svg:nth-of-type(1) {
-  display: block;
-}
-:checked ~ label svg:nth-of-type(2) {
-  display: none;
 }
 
+body {
+  background: black;
+}
+
+#cake {
+  display: block;
+  position: relative;
+  margin: -10em auto 0 auto;
+}
+
+/* ============================================== Candle
+*/
+.velas {
+  background: #ffffff;
+  border-radius: 10px;
+  position: absolute;
+  top: 228px;
+  left: 50%;
+  margin-left: -2.4px;
+  margin-top: -8.33333333px;
+  width: 5px;
+  height: 35px;
+  transform: translateY(-300px);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-animation: in 500ms 6s ease-out forwards;
+          animation: in 500ms 6s ease-out forwards;
+}
+
+.velas:after,
+.velas:before {
+  background: rgba(255, 0, 0, 0.4);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2.22222222px;
+}
+
+.velas:after {
+  top: 25%;
+  left: 0;
+}
+
+.velas:before {
+  top: 45%;
+  left: 0;
+}
+
+/* ============================================== Fire
+*/
+.fuego {
+  border-radius: 100%;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  margin-left: -2.6px;
+  width: 6.66666667px;
+  height: 18px;
+}
+
+.fuego:nth-child(1) {
+  -webkit-animation: fuego 2s 6.5s infinite;
+          animation: fuego 2s 6.5s infinite;
+}
+
+.fuego:nth-child(2) {
+  -webkit-animation: fuego 1.5s 6.5s infinite;
+          animation: fuego 1.5s 6.5s infinite;
+}
+
+.fuego:nth-child(3) {
+  -webkit-animation: fuego 1s 6.5s infinite;
+          animation: fuego 1s 6.5s infinite;
+}
+
+.fuego:nth-child(4) {
+  -webkit-animation: fuego 0.5s 6.5s infinite;
+          animation: fuego 0.5s 6.5s infinite;
+}
+
+.fuego:nth-child(5) {
+  -webkit-animation: fuego 0.2s 6.5s infinite;
+          animation: fuego 0.2s 6.5s infinite;
+}
+
+/* ============================================== Animation Fire
+*/
+@-webkit-keyframes fuego {
+  0%, 100% {
+    background: rgba(254, 248, 97, 0.5);
+    box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    background: rgba(255, 50, 0, 0.1);
+    box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
+    transform: translateY(-20px) scale(0);
+  }
+}
+@keyframes fuego {
+  0%, 100% {
+    background: rgba(254, 248, 97, 0.5);
+    box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    background: rgba(255, 50, 0, 0.1);
+    box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
+    transform: translateY(-20px) scale(0);
+  }
+}
+@-webkit-keyframes in {
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes in {
+  to {
+    transform: translateY(0);
+  }
+}
+.text {
+  color: #8b6a60;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+}
+.text h1 {
+  font-size: 1.4em;
+}
     </style>
 </head>
 <body>
 
-    
-<div class="birthday-button">
-    <button class="birthday-button__button">
-      <svg class="birthday-button__cake" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 76.609 47.643">
-        <defs>
-          <g id="candle" transform="translate(-48.82 -137.74)">
-            <rect ry=".567" y="147.888" x="72.548" height="12.001" width="4.252" fill="#ececec"></rect>
-            <g class="candle__flame">
-              <path class="candle__flame-outer" d="M75.672 145.92c.608 1.207.086 2.224-.749 2.224s-1.512-.037-1.512-1.388.558-3.566 1.98-3.973c1.007-.288-.855.884.281 3.138z" fill="#f60"></path>
-              <path class="candle__flame-inner" d="M75.081 146.449c.41.51.266 1.043-.13 1.128-.394.084-.682-.228-.822-.866 0 0-.13-1.382.502-1.719.447-.238-.315.505.45 1.457z" fill="#ff0"></path>
-            </g>
-            <g style="display: none">
-              <path id="flame-outer" d="M73.676 145.92c-.609 1.207-.086 2.224.749 2.224s1.511-.037 1.511-1.388-.557-3.566-1.98-3.973c-1.006-.288.856.884-.28 3.138z" fill="#f60"></path>
-              <path id="flame-inner" d="M74.267 146.449c-.41.51-.266 1.043.129 1.128.395.084.683-.228.823-.866 0 0 .13-1.382-.502-1.719-.447-.238.315.505-.45 1.457z" fill="#ff0"></path>
-            </g>
-          </g>
-          <clipPath id="face-clip">
-            <rect transform="translate(-48.82 -138.799)" width="63.5" height="26.458" x="55.374" y="159.984" ry="3.402"></rect>
-          </clipPath>
-          <clipPath id="sprinkle-clip">
-            <rect width="63.5" height="26.458" x="55.374" y="159.984" ry="3.402"></rect>
-          </clipPath>
-          <clipPath id="frosting-clip">
-            <path d="m 58.311339,159.19367 c -1.915439,0 -3.331523,2.04311 -3.986711,3.74446 -0.778328,2.02111 -0.761971,4.73695 0.529167,6.47582 0.861406,1.16012 2.614079,1.3182 4.033715,1.5875 1.321013,0.25059 2.689143,0 4.033714,0 1.344572,0 2.689143,0 4.033715,0 1.344572,0 2.689143,0 4.033715,0 1.344571,0 2.689143,0 4.033714,0 1.344572,0 2.689143,0 4.033715,0 1.344572,0 2.689143,0 4.033715,0 1.344572,0 2.689143,0 4.033715,0 1.344571,0 2.689143,0 4.033714,0 1.344572,0 2.689143,0 4.033715,0 1.344572,0 2.689143,0 4.033715,0 1.344573,0 2.689143,0 4.033713,0 1.34457,0 2.68915,0 4.03372,0 1.34457,0 2.68914,0 4.03371,0 1.34457,0 2.71271,0.25059 4.03372,0 1.41963,-0.2693 3.17231,-0.42738 4.03371,-1.5875 1.29114,-1.73887 1.3075,-4.45471 0.52917,-6.47582 -0.65519,-1.70135 -2.07128,-3.74446 -3.98672,-3.74446 z" style="fill:#ff0041;fill-opacity:0.53424659;fill-rule:nonzero;stroke:none;stroke-width:0.90433162;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"></path>
-          </clipPath>
-          <g id="sprinkles" transform="translate(63.93)">
-            <rect class="cake__sprinkle" transform="rotate(-44.064)" ry=".567" y="167.592" x="-91.837" height="1.228" width="3.307"></rect>
-            <rect class="cake__sprinkle" transform="rotate(127.01)" ry=".567" y="165.35" x="76.642" height="1.228" width="3.307"></rect>
-            <rect class="cake__sprinkle" transform="rotate(85.232)" width="3.307" height="1.228" x="182.37" y="3.842" ry=".567"></rect>
-            <rect class="cake__sprinkle" transform="rotate(136.794)" ry=".567" y="-137.013" x="122.349" height="1.228" width="3.307"></rect>
-            <rect class="cake__sprinkle" transform="rotate(-28.569)" width="3.307" height="1.228" x="-90.997" y="160.466" ry=".567"></rect>
-            <rect class="cake__sprinkle" transform="rotate(-134.37)" ry=".567" y="-124.272" x="-138.396" height="1.228" width="3.307"></rect>
-            <rect class="cake__sprinkle" transform="rotate(-37.152)" width="3.307" height="1.228" x="-101.107" y="155.28" ry=".567"></rect>
-            <rect class="cake__sprinkle" transform="rotate(-72.723)" ry=".567" y="77.322" x="-169.664" height="1.228" width="3.307"></rect>
-            <rect class="cake__sprinkle" transform="rotate(36.566)" width="3.307" height="1.228" x="124.338" y="135.065" ry=".567"></rect>
-            <rect class="cake__sprinkle" transform="rotate(-45)" ry=".567" y="150.009" x="-111.692" height="1.228" width="3.307"></rect>
-            <rect class="cake__sprinkle" transform="rotate(30)" width="3.307" height="1.228" x="119.879" y="141.701" ry=".567"></rect>
-            <rect class="cake__sprinkle" transform="rotate(-55.914)" ry=".567" y="139.024" x="-129.555" height="1.228" width="3.307"></rect>
-            <rect class="cake__sprinkle" transform="rotate(-30)" width="3.307" height="1.228" x="-60.133" y="178.671" ry=".567"></rect>
-            <rect class="cake__sprinkle" transform="rotate(45)" ry=".567" y="95.647" x="162.293" height="1.228" width="3.307"></rect>
-            <rect class="cake__sprinkle" transform="rotate(45)" ry=".567" y="133.647" x="124.293" height="1.228" width="3.307"></rect>
-          </g>
-          <path id="frosting" d="M58.311 159.194c-1.915 0-3.283-.087-3.986 1.098-.392.661-.073 1.766.529 2.243 1.054.834 2.689 0 4.034 0H115.36c1.344 0 2.979.834 4.033 0 .602-.477.921-1.582.53-2.243-.703-1.185-2.072-1.098-3.987-1.098z"></path>
-          <path class="cake__frosting cake__frosting--end" d="M58.311 159.194c-1.915 0-3.354 2.034-3.986 3.744-.57 1.537-.953 4.189.529 4.888 1.454.687 2.425-2.645 4.034-2.645 1.608 0 2.425 2.645 4.033 2.645 1.608 0 2.426-2.645 4.034-2.645 1.608 0 2.426 2.645 4.034 2.645 1.608 0 2.425-2.645 4.033-2.645 1.608 0 2.426 2.645 4.034 2.645 1.608 0 2.426-2.645 4.034-2.645 1.608 0 2.426 2.645 4.034 2.645 1.608 0 2.425-2.645 4.033-2.645 1.608 0 2.426 2.645 4.034 2.645 1.608 0 2.436-2.83 4.034-2.645 1.936.222 2.084 4.233 4.033 4.233 1.95 0 2.098-4.01 4.034-4.233 1.598-.184 2.426 2.645 4.034 2.645 1.608 0 2.426-2.645 4.034-2.645 1.608 0 2.58 3.332 4.033 2.645 1.482-.7 1.098-3.35.53-4.888-.633-1.71-2.072-3.744-3.987-3.744z"></path>
-        </defs>
-        <g class="cake-decoration" transform="translate(-48.82 -138.799)">
-          <g class="cake__frosting-group" clip-path="url(#frosting-clip)">
-            <g class="cake__frosting cake__frosting--start">
-              <use xlink:href="#frosting"></use>
-            </g>
-            <g class="cake__frosting cake__frosting--duplicate">
-              <rect class="cake__frosting-patch" width="20" height="5" x="110" y="159.25"></rect>
-              <use xlink:href="#frosting"></use>
-            </g>
-          </g>
-          <g class="cake__sprinkles-group" clip-path="url(#sprinkle-clip)">
-            <g class="cake__sprinkles cake__sprinkles--initial">
-              <use xlink:href="#sprinkles"></use>
-            </g>
-            <g class="cake__sprinkles cake__sprinkles--duplicate">
-              <use xlink:href="#sprinkles"></use>
-            </g>
-          </g>
-        </g>
-        <g clip-path="url(#face-clip)">
-          <g class="cake__face" transform="translate(-48.82 -138.799)">
-            <g class="cake__eyes">
-              <g class="cake__eye" transform="matrix(1.38031 0 0 1.38031 34.723 -33.58)">
-                <circle class="cake__eye-body" cx="29.86" cy="149.022" r="2.457"></circle>
-                <circle class="cake__eye-pupil" cx="28.773" cy="148.162" r=".756"></circle>
-              </g>
-              <g class="cake__eye" transform="matrix(1.38031 0 0 1.38031 57.092 -33.58)">
-                <circle class="cake__eye-body" r="2.457" cy="149.022" cx="29.86"></circle>
-                <circle class="cake__eye-pupil" r=".756" cy="148.162" cx="28.773"></circle>
-              </g>
-            </g>
-            <g class="cake__mouth">
-              <path class="cake__mouth-opening" d="M83.607 174.436a3.652 3.652 0 003.518 2.674 3.652 3.652 0 003.515-2.674z" stroke-width="1.1801650499999998" stroke-linecap="round" stroke-linejoin="round"></path>
-              <path class="cake__tongue" d="M88.836 175.492a3.113 2.329 0 00-2.869 1.425 3.652 3.652 0 001.158.192 3.652 3.652 0 002.899-1.44 3.113 2.329 0 00-1.188-.177z"></path>
-            </g>
-          </g>
-          <g class="cake__face--straining" transform="translate(-48.82 -138.799)">
-            <path d="M100.673 173.886l-5.248-2.073 5.713-1.466M73.574 173.886l5.248-2.073-5.713-1.466" fill="none" stroke="#000" stroke-width="1.01590816" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M85.016 175.773h4.216" fill="none" stroke="#000" stroke-width=".86683468" stroke-linecap="round"></path>
-          </g>
-        </g>
-        <g class="cake__candles">
-          <g class="cake__candle">
-            <use xlink:href="#candle"></use>
-          </g>
-          <g class="cake__candle">
-            <use xlink:href="#candle" transform="translate(25 0)"></use>
-          </g>
-          <g class="cake__candle">
-            <use xlink:href="#candle" transform="translate(12 0.5)"></use>
-          </g>
-        </g>
-      </svg><span class="birthday-button__text" data-splitting="">Click me</span>
-    </button>
-    <h2 style="text-align: center; font-size: 2.2rem;">For Ruhikka </h2>
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+   
 
-  <script>
-    const {
-  gsap,
-  gsap: { to, timeline, set, delayedCall },
-  Splitting } =
-window;
+<div class="velas">
+    <div class="fuego"></div>
+    <div class="fuego"></div>
+    <div class="fuego"></div>
+    <div class="fuego"></div>
+    <div class="fuego"></div>
+</div>
+<svg id="cake" version="1.1" x="0px" y="0px" width="200px" height="500px" viewBox="0 0 200 500" enable-background="new 0 0 200 500" xml:space="preserve">
+    <path fill="#a88679" d="M173.667-13.94c-49.298,0-102.782,0-147.334,0c-3.999,0-4-16.002,0-16.002
+		c44.697,0,96.586,0,147.334,0C177.667-29.942,177.668-13.94,173.667-13.94z">
+        <animate id="bizcocho_3" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1" begin="relleno_2.end" dur="0.3s" fill="freeze" values="
+                          M173.667-13.94c-49.298,0-102.782,0-147.334,0c-3.999,0-4-16.002,0-16.002
+		c44.697,0,96.586,0,147.334,0C177.667-29.942,177.668-13.94,173.667-13.94z
+                          ;
+                          M173.667,411.567c-47.995,12.408-102.955,12.561-147.334,0
+		c-3.848-1.089-0.189-16.089,3.661-15.002c44.836,12.66,90.519,12.753,139.427,0.07
+		C173.293,395.631,177.541,410.566,173.667,411.567z
+                          ;
+                          M173.667,427.569c-49.795,0-101.101,0-147.334,0c-3.999,0-4-16.002,0-16.002
+		c46.385,0,97.539,0,147.334,0C177.668,411.567,177.667,427.569,173.667,427.569z
+                          " />
+    </path>
+    <path fill="#8b6a60" d="M100-178.521c1.858,0,3.364,1.506,3.364,3.363c0,0,0,33.17,0,44.227
+		c0,19.144,0,57.431,0,76.574c0,10.152,0,40.607,0,40.607c0,1.858-1.506,3.364-3.364,3.364l0,0c-1.858,0-3.364-1.506-3.364-3.364c0,0,0-30.455,0-40.607c0-19.144,0-57.432,0-76.575c0-11.057,0-44.226,0-44.226C96.636-177.015,98.142-178.521,100-178.521
+		L100-178.521z">
+        <animate id="relleno_2" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0 0 0.58 1" begin="bizcocho_2.end" dur="0.5s" fill="freeze" values="
+                          M100-178.521c1.858,0,3.364,1.506,3.364,3.363c0,0,0,33.17,0,44.227
+		c0,19.144,0,57.431,0,76.574c0,10.152,0,40.607,0,40.607c0,1.858-1.506,3.364-3.364,3.364l0,0c-1.858,0-3.364-1.506-3.364-3.364c0,0,0-30.455,0-40.607c0-19.144,0-57.432,0-76.575c0-11.057,0-44.226,0-44.226C96.636-177.015,98.142-178.521,100-178.521
+		L100-178.521z
+                          ;
+                          M100,267.257c1.858,0,3.364,1.506,3.364,3.363c0,0,0,33.17,0,44.227
+		c0,19.143,0,57.43,0,76.574c0,10.151,0,40.606,0,40.606c0,1.858-1.506,3.364-3.364,3.364l0,0c-1.858,0-3.364-1.506-3.364-3.364
+		c0,0,0-30.455,0-40.606c0-19.145,0-57.432,0-76.576c0-11.057,0-44.225,0-44.225C96.636,268.763,98.142,267.257,100,267.257
+		L100,267.257z
+                          ;
+                          M93.928,405.433c-0.655,6.444-0.102,9.067,2.957,11.798c0,0,8.083,5.571,16.828,3.503
+		c18.629-4.406,43.813,6.194,50.792,7.791c14.75,3.375,9.162,6.867,9.162,6.867c-2.412,2.258-58.328,0-73.667,0l0,0
+		c-1.858,0-69.995,2.133-73.667,0c0,0-3.337-2.439,6.172-5.992c11.375-4.25,52.875,8.822,47.139-9.442
+		c-6.333-20.167,5.226-21.514,5.226-21.514c3.435-0.915,12.78-6.663,10.923-0.546L93.928,405.433z
+                          ;
+                          M102.242,427.569c5.348,0,14.079,0,17.462,0c0,0,17.026,0,27.504,0
+		c19.143,0,20.39-3.797,26.459,0c3,1.877,0,7.823,0,7.823c-2.412,2.258-58.328,0-73.667,0l0,0c-1.858,0-67.187,0-73.667,0
+		c0,0-4.125-4.983,0-7.823c5.201-3.58,16.085,0,23.725,0c8.841,0,20.762,0,20.762,0c3.686,0,8.597,0,19.511,0H102.242z
+                          " />
+    </path>
+    <path fill="#a88679" d="M173.667-15.929c-46.512,0-105.486,0-147.334,0c-3.999,0-4-16.002,0-16.002
+		c43.566,0,97.96,0,147.334,0C177.667-31.931,177.666-15.929,173.667-15.929z">
+        <animate id="bizcocho_2" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0.25 0 0.58 1" begin="relleno_1.end" dur="0.5s" fill="freeze" values="
+                          M173.667-15.929c-46.512,0-105.486,0-147.334,0c-3.999,0-4-16.002,0-16.002
+		c43.566,0,97.96,0,147.334,0C177.667-31.931,177.666-15.929,173.667-15.929z
+                          ;
+                          M173.434,445.393c-47.269,8.001-105.245,8.001-147.334,0c-3.929-0.747-0.692-16.543,3.243-15.824
+		c43.828,8.001,92.165,8.001,140.739,0C174.029,428.918,177.377,444.726,173.434,445.393z
+                          ;
+                          M173.667,449.514c-47.576-5.454-102.799-5.744-147.333,0c-3.966,0.512-3.938-15.297,0-16.002
+		c43.683-7.823,97.646-8.026,147.333,0C177.616,434.15,177.642,449.969,173.667,449.514z
+                          ;
+                          M173.667,451.394c-49.298,0-102.782,0-147.334,0c-3.999,0-4-16.002,0-16.002
+		c44.697,0,96.586,0,147.334,0C177.667,435.392,177.668,451.394,173.667,451.394z
+                          " />
+    </path>
+    <path fill="#8b6a60" d="M101.368-73.685c0,12.164,0,15.18,0,28.519c0,22.702,0-13.661,0,8.304c0,14.48,0,18.233,0,30.512
+		c0,1.753-2.958,1.847-2.958,0c0-12.68,0-16.277,0-30.401c0-21.983,0,11.66,0-8.305c0-13.027,0-15.992,0-28.628
+		C98.411-75.883,101.368-75.592,101.368-73.685z">
+        <animate id="relleno_1" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0 0 0.6 1" begin="bizcocho_1.end" dur="0.5s" fill="freeze" values="
+                          M101.368-73.685c0,12.164,0,15.18,0,28.519c0,22.702,0-13.661,0,8.304c0,14.48,0,18.233,0,30.512
+		c0,1.753-2.958,1.847-2.958,0c0-12.68,0-16.277,0-30.401c0-21.983,0,11.66,0-8.305c0-13.027,0-15.992,0-28.628
+		C98.411-75.883,101.368-75.592,101.368-73.685z
+                          ;
+                          M101.368,350.885c0,12.164,0,65.18,0,78.518c0,22.703,0-33.66,0-11.695c0,14.48,0,28.232,0,40.512
+		c0,1.753-2.958,1.847-2.958,0c0-12.68,0-26.277,0-40.402c0-21.982,0,31.66,0,11.695c0-13.027,0-65.992,0-78.627
+		C98.411,348.686,101.368,348.977,101.368,350.885z
+                          ;
+                          M128.38,447.567c37.626,6.312,39.303,13.658,26.833,12.833c-22.653-1.499-13.636-0.831-23.302-0.831
+		c-14.48,0-17.884,0-30.163,0c-2.087,0-2.068,0-3.915,0c-13.333,0-8.963,0-23.088,0c-11.668,0-14.062,5.995-27.532,1.164
+		c-12.629-4.529,38.667-3.167,46.833-17.333C100.077,432.94,105.546,443.736,128.38,447.567z
+                          ;
+                          M173.667,451.394c2.875,0,2.997,9.257,0,9.131c-22.662-0.956-32.09-0.956-41.756-0.956
+		c-14.48,0-17.884,0-30.163,0c-2.087,0-2.068,0-3.915,0c-13.333,0-8.963,0-23.088,0c-11.668,0-34.99-0.294-48.412,1.831
+		c-4.109,0.65-3.01-10.006,0-10.006C37.129,451.394,149.379,451.394,173.667,451.394z
+                          " />
+    </path>
+    <path fill="#a88679" d="M173.667,21.571c-33.174,0-111.467,0-147.334,0c-4,0-4-16.002,0-16.002c39.836,0,105.982,0,147.334,0
+		C177.668,5.569,177.667,21.571,173.667,21.571z">
+        <animate id="bizcocho_1" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0 0 1 1; 0.25 0 1 1; 0 0 1 1; 0.25 0 0.6 1" begin="2s" dur="0.8s" fill="freeze" values="
+                          M173.667,21.571c-33.174,0-111.467,0-147.334,0c-4,0-4-16.002,0-16.002c39.836,0,105.982,0,147.334,0
+		C177.668,5.569,177.667,21.571,173.667,21.571z
+                          ;
+                          M173.667,459.569c-33.197,16.002-110.782,16.002-147.334,0c-3.664-1.604,1.614-15.617,5.337-14.153
+		c40.702,16.002,94.289,16.104,136.505,0.103C171.917,444.1,177.271,457.832,173.667,459.569z
+                          ;
+                          M171.817,475.571c-39.361-3.001-105.438-2.571-143.556,0c-3.991,0.27-7.377-14.736-3.387-15.014
+		c41.553-2.888,104.421-3.121,150.51-0.233C179.378,460.574,175.806,475.875,171.817,475.571z
+                          ;
+                          M171.817,459.564c-38.8-12.188-104.504-13.762-143.556,0c-3.772,1.329-7.961-12.604-4.178-13.905
+		c40.864-14.064,105.114-15.52,151.918-0.973C179.822,445.874,175.634,460.762,171.817,459.564z
+                          ;
+                          M173.667,475.571c-46.376-5.005-105.924-4.003-147.334,0c-3.981,0.385-3.479-15.421,0.479-16.002
+		c43.087-6.327,97.705-7.083,146.855,0.438C177.621,460.613,177.644,476,173.667,475.571z
+                          ;
+                          M173.667,474.117c-46.376,1.866-105.638,2.01-147.334,0c-3.995-0.192-3.52-16.144,0.479-16.002
+		c43.794,1.55,96.341,1.541,145.723,0C176.532,457.99,177.663,473.956,173.667,474.117z
+                          ;
+                          M173.667,475.571c-46.512,0-105.486,0-147.334,0c-3.999,0-4-16.002,0-16.002c43.566,0,97.96,0,147.334,0
+		C177.667,459.569,177.666,475.571,173.667,475.571z
+                          " />
+    </path>
+    <path fill="#fefae9" d="M104.812,113.216c0,3.119-2.164,5.67-4.812,5.67c-2.646,0-4.812-2.551-4.812-5.67c0-5.594,0-16.782,0-22.375
+	c0-5.143,0-15.427,0-20.568c0-7.333,0-21.998,0-29.33c0-5.523,0-16.569,0-22.092c0-3.295,0-9.885,0-13.181
+	C95.188,2.551,97.353,0,100,0c2.648,0,4.812,2.551,4.812,5.669c0,3.248,0,9.743,0,12.991c0,5.428,0,16.284,0,21.711
+	c0,7.618,0,22.854,0,30.472c0,4.952,0,14.854,0,19.807C104.812,96.292,104.812,107.576,104.812,113.216z">
+        <animate id="crema" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0 0 1 1; 0.25 0 1 1; 0 0 1 1; 0 0 0.58 1" begin="bizcocho_3.end" dur="2s" fill="freeze" values="
+                          M104.812,113.216c0,3.119-2.164,5.67-4.812,5.67c-2.646,0-4.812-2.551-4.812-5.67c0-5.594,0-16.782,0-22.375
+	c0-5.143,0-15.427,0-20.568c0-7.333,0-21.998,0-29.33c0-5.523,0-16.569,0-22.092c0-3.295,0-9.885,0-13.181
+	C95.188,2.551,97.353,0,100,0c2.648,0,4.812,2.551,4.812,5.669c0,3.248,0,9.743,0,12.991c0,5.428,0,16.284,0,21.711
+	c0,7.618,0,22.854,0,30.472c0,4.952,0,14.854,0,19.807C104.812,96.292,104.812,107.576,104.812,113.216z
+                          ;
+                          M104.812,405.897c0,3.119-2.164,5.67-4.812,5.67c-2.646,0-4.812-2.551-4.812-5.67c0-5.594,0-16.782,0-22.376
+	c0-5.143,0-15.426,0-20.568c0-7.332,0-21.997,0-29.33c0-5.522,0-16.568,0-22.092c0-3.295,0-9.885,0-13.181
+	c0-3.118,2.165-5.669,4.812-5.669c2.648,0,4.812,2.551,4.812,5.669c0,3.247,0,9.743,0,12.991c0,5.428,0,16.283,0,21.711
+	c0,7.618,0,22.854,0,30.473c0,4.951,0,14.854,0,19.807C104.812,388.972,104.812,400.256,104.812,405.897z
+                          ;
+                          M111.873,411.567c-3.119,0-9.226,0-11.874,0c-2.646,0-7.748,0-10.867,0c-7.086,0-12.698,0-18.292,0
+	c-6.592,0-12.871,7.371-19.166,3.008c-10.043-6.961-7.776-10.169,2.991-17.745c12.61-8.873,27.713,1.994,25.919-7.531
+	c-2.589-13.742,11.008-14.513,11.365-17.789c0.441-4.051,4.235-11.107,8.051-8.175c3.113,2.393,1.007,8.008,0,13.159
+	c-1.871,9.569,8.058,2.113,9.494,14.155c2.592,21.732,21.184-0.675,29.309,7.976c5.216,5.553,18.413,5.552,15.426,12.942
+	c-3.131,7.745-15.825-4.369-23.8,2.903C126.261,418.271,118.301,411.567,111.873,411.567z
+                          ;
+                          M111.873,411.567c-3.119,0-9.226,0-11.874,0c-2.646,0-9.734,4.069-12.853,4.069
+	c-7.086,0-10.712-4.069-16.306-4.069c-6.592,0-12.12,6.013-19.166,3.008c-7.053-3.008-7.458,2.026-18.659,1.165
+	c-6.832-0.525-7.522-3.034-7.533-6.265c-0.037-10.336,22.073-2.452,36.613-2.628c10.234-0.124,19.856-1.439,37.905-2.102
+	c16.642-0.61,32.699,1.552,46.009,1.927c12.438,0.351,29.663-8.99,31.532,3.315c0.773,5.093-5.605,3.342-11.211,9.579
+	c-5.093,5.667-7.59-4.605-12.965-3.832c-8.269,1.189-14.962-8.537-22.937-1.265C126.261,418.271,118.301,411.567,111.873,411.567z
+                          ;
+                          M110.946,413.652c-2.904-1.137-8.405-2.748-12.446-0.97c-6.099,2.685-7.273,10.358-13.253,8.242
+	c-7.843-2.775-8.953-5.008-14.546-5.01c-24.653-0.011-4.849,26.507-18.264,26.507c-12.377,0,5.791-33.537-19.422-26.682
+	c-7.703,2.095-9.806-0.942-9.817-4.173c-0.037-10.336,24.357-4.544,38.897-4.72c10.234-0.124,19.856-1.439,37.905-2.102
+	c16.642-0.61,32.699,1.552,46.009,1.927c12.438,0.351,28.973-8.865,31.532,3.315c1.449,6.896,0.318,15.624-3.874,15.624
+	c-7.619,0-1.788-15.192-19.243-7.111c-7.581,3.51-15.963-9.738-26.669,1.066C120.644,426.744,118.381,416.561,110.946,413.652z
+                          ;
+                          M111.547,413.9c-2.969-0.956-8.775-0.949-13.167-0.5c-14.667,1.5-8.325,16.508-14.667,16.666
+	c-6.667,0.166-0.167-13.5-13.013-14.151c-30.471-1.545-5.572,46.651-18.987,46.651c-12.377,0,10.333-50.166-18.667-44.5
+	c-7.835,1.531-9.537-1.417-9.548-4.647c-0.037-10.336,23.675-5.177,38.215-5.353c10.234-0.124,20.618-1.671,38.667-2.333
+	c16.642-0.61,32.023,1.458,45.333,1.833c12.438,0.351,33.819-8.431,33.199,4.001c-0.532,10.666,0.414,26.166-5.245,25.833
+	c-7.606-0.447-2.954-31.5-19.243-18.899c-7.985,6.177-17.658-5.969-27.377,5.732C118.88,434.066,121.38,417.067,111.547,413.9z
+                          ;
+                          M111.547,415.233c-6.667-0.834-9.667,4.667-13.833,3.333c-19.649-6.291-8.158,22.176-14.5,22.334
+	c-6.667,0.166,2.833-18-13.333-22.167c-29.544-7.615-9.667,43.833-20.167,43.833c-10.333,0,8.004-55.006-16.833-39
+	c-7.5,4.833-9.508-3.78-9.299-7.004c0.799-12.329,23.592-7.153,38.132-7.329c10.234-0.124,20.238-1.505,38.287-2.167
+	c16.642-0.61,32.903,1.125,46.213,1.5c12.438,0.351,35.058-5.579,31.863,6.451c-5.532,20.833,1.25,28.216-4.409,27.883
+	c-7.606-0.447-6.058-37.895-20.62-23.333c-10.167,10.166-15.972-0.747-25,12C119.547,443.568,121.798,416.515,111.547,415.233z
+                          " />
+    </path>
+    <rect x="10" y="475.571" fill="#fefae9" width="180" height="4" />
+</svg>
+<div class="text">
+  <h1 style="font-size: 2rem;">happy birthday!</h1>
+  <p style="font-size: 2.4rem;">Ruhi</p>
+</div>
 
-Splitting();
-
-const BTN = document.querySelector('.birthday-button__button');
-const SOUNDS = {
-  CHEER: new Audio(
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/605876/cheer.mp3'),
-
-  MATCH: new Audio(
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/605876/match-strike-trimmed.mp3'),
-
-  TUNE: new Audio(
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/605876/happy-birthday-trimmed.mp3'),
-
-  ON: new Audio('https://assets.codepen.io/605876/switch-on.mp3'),
-  BLOW: new Audio(
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/605876/blow-out.mp3'),
-
-  POP: new Audio(
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/605876/pop-trimmed.mp3'),
-
-  HORN: new Audio(
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/605876/horn.mp3') };
-
-
-
-const EYES = document.querySelector('.cake__eyes');
-const BLINK = eyes => {
-  gsap.set(eyes, { scaleY: 1 });
-  if (eyes.BLINK_TL) eyes.BLINK_TL.kill();
-  eyes.BLINK_TL = new gsap.timeline({
-    delay: Math.floor(Math.random() * 4) + 1,
-    onComplete: () => BLINK(eyes) });
-
-  eyes.BLINK_TL.to(eyes, {
-    duration: 0.05,
-    transformOrigin: '50% 50%',
-    scaleY: 0,
-    yoyo: true,
-    repeat: 1 });
-
-};
-BLINK(EYES);
-
-const FROSTING_TL = () =>
-timeline().
-to(
-'#frosting',
-{
-  scaleX: 1.015,
-  duration: 0.25 },
-
-0).
-
-to(
-'#frosting',
-{
-  scaleY: 1,
-  duration: 1 },
-
-0).
-
-to(
-'#frosting',
-{
-  duration: 1,
-  morphSVG: '.cake__frosting--end' },
-
-0);
-
-// Extract to sprinkle
-const SPRINKLES_TL = () =>
-timeline().to('.cake__sprinkle', { scale: 1, duration: 0.06, stagger: 0.02 });
-// Extract out to your own timeline
-const SPIN_TL = () =>
-timeline().
-set('.cake__frosting-patch', { display: 'block' }).
-to(
-['.cake__frosting--duplicate', '.cake__sprinkles--duplicate'],
-{ x: 0, duration: 1 },
-0).
-
-to(
-['.cake__frosting--start', '.cake__sprinkles--initial'],
-{ x: 65, duration: 1 },
-0).
-
-to('.cake__face', { duration: 1, x: -48.82 }, 0);
-
-const flickerSpeed = 0.1;
-const FLICKER_TL = timeline().
-to('.candle__flame-outer', {
-  duration: flickerSpeed,
-  repeat: -1,
-  yoyo: true,
-  morphSVG: '#flame-outer' }).
-
-to(
-'.candle__flame-inner',
-{
-  duration: flickerSpeed,
-  repeat: -1,
-  yoyo: true,
-  morphSVG: '#flame-inner' },
-
-0);
-
-
-const SHAKE_TL = () =>
-timeline({ delay: 0.5 }).
-set('.cake__face', { display: 'none' }).
-set('.cake__face--straining', { display: 'block' }).
-to(
-'.birthday-button',
-{
-  onComplete: () => {
-    set('.cake__face--straining', { display: 'none' });
-    set('.cake__face', { display: 'block' });
-  },
-  x: 1,
-  y: 1,
-  repeat: 13,
-  duration: 0.1 },
-
-0).
-
-to(
-'.cake__candle',
-{
-  onComplete: () => {
-    FLICKER_TL.play();
-  },
-  onStart: () => {
-    SOUNDS.POP.play();
-    delayedCall(0.2, () => SOUNDS.POP.play());
-    delayedCall(0.4, () => SOUNDS.POP.play());
-  },
-  ease: 'Elastic.easeOut',
-  duration: 0.2,
-  stagger: 0.2,
-  scaleY: 1 },
-
-0.2);
-
-const FLAME_TL = () =>
-timeline({}).
-to('.cake__candle', { '--flame': 1, stagger: 0.2, duration: 0.1 }).
-to('body', { '--flame': 1, '--lightness': 5, duration: 0.2, delay: 0.2 });
-const LIGHTS_OUT = () =>
-timeline().to('body', {
-  onStart: () => SOUNDS.BLOW.play(),
-  delay: 0.5,
-  '--lightness': 0,
-  duration: 0.1,
-  '--glow-saturation': 0,
-  '--glow-lightness': 0,
-  '--glow-alpha': 1,
-  '--transparency-alpha': 1 });
-
-
-const RESET = () => {
-  set('.char', {
-    '--hue': () => Math.random() * 360,
-    '--char-sat': 0,
-    '--char-light': 0,
-    x: 0,
-    y: 0,
-    opacity: 1 });
-
-  set('body', {
-    '--frosting-hue': Math.random() * 360,
-    '--glow-saturation': 50,
-    '--glow-lightness': 35,
-    '--glow-alpha': 0.4,
-    '--transparency-alpha': 0,
-    '--flame': 0 });
-
-  set('.cake__candle', { '--flame': 0 });
-  to('body', {
-    '--lightness': 50,
-    duration: 0.25 });
-
-  // SET THESE
-  set('.cake__frosting--end', { opacity: 0 });
-  set('#frosting', {
-    transformOrigin: '50% 10%',
-    scaleX: 0,
-    scaleY: 0 });
-
-  set('.cake__frosting-patch', { display: 'none' });
-  set(['.cake__frosting--duplicate', '.cake__sprinkles--duplicate'], { x: -65 });
-  set('.cake__face', { x: -110 });
-  set('.cake__face--straining', { display: 'none' });
-  set('.cake__sprinkle', {
-    '--sprinkle-hue': () => Math.random() * 360,
-    scale: 0,
-    transformOrigin: '50% 50%' });
-
-  set('.birthday-button', { scale: 0.6, x: 0, y: 0 });
-  set('.birthday-button__cake', { display: 'none' });
-  set('.cake__candle', { scaleY: 0, transformOrigin: '50% 100%' });
-};
-RESET();
-const MASTER_TL = timeline({
-  onStart: () => {
-    SOUNDS.ON.play();
-  },
-  onComplete: () => {
-    delayedCall(2, RESET);
-    BTN.removeAttribute('disabled');
-  },
-  paused: true }).
-
-set('.birthday-button__cake', { display: 'block' }).
-to('.birthday-button', {
-  onStart: () => SOUNDS.CHEER.play(),
-  scale: 1,
-  duration: 0.2 }).
-
-to('.char', { '--char-sat': 70, '--char-light': 65, duration: 0.2 }, 0).
-to('.char', {
-  onStart: () => SOUNDS.HORN.play(),
-  delay: 0.75,
-  y: () => gsap.utils.random(-100, -200),
-  x: () => gsap.utils.random(-50, 50),
-  duration: () => gsap.utils.random(0.5, 1) }).
-
-to('.char', { opacity: 0, duration: 0.25 }, '>-0.5').
-add(FROSTING_TL()).
-add(SPRINKLES_TL()).
-add(SPIN_TL()).
-add(SHAKE_TL()).
-add(FLAME_TL(), 'FLAME_ON').
-add(LIGHTS_OUT(), 'LIGHTS_OUT');
-
-SOUNDS.TUNE.onended = SOUNDS.MATCH.onended = () => MASTER_TL.play();
-MASTER_TL.addPause('FLAME_ON', () => SOUNDS.MATCH.play());
-MASTER_TL.addPause('LIGHTS_OUT', () => SOUNDS.TUNE.play());
-BTN.addEventListener('click', () => {
-    setTimeout(() => {
-        window.location.href = "./page1.html"
-    }, 23500)
-  BTN.setAttribute('disabled', true);
-  MASTER_TL.restart();
-});
-
-SOUNDS.TUNE.muted = SOUNDS.MATCH.muted = SOUNDS.HORN.muted = SOUNDS.POP.muted = SOUNDS.CHEER.muted = SOUNDS.BLOW.muted = SOUNDS.ON.muted = true;
-
-const toggleAudio = () => {
-  SOUNDS.TUNE.muted = SOUNDS.MATCH.muted = SOUNDS.POP.muted = SOUNDS.HORN.muted = SOUNDS.CHEER.muted = SOUNDS.BLOW.muted = SOUNDS.ON.muted = !SOUNDS.
-  BLOW.muted;
-};
-    toggleAudio()  </script>
-
-    
+<script>
+    setTimeout(() =>{
+        window.location.href = ".,/page1.html"
+    }, 10000)
+</script>
     
 </body>
 </html>
